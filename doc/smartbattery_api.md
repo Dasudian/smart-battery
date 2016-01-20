@@ -1,4 +1,4 @@
-## Devide Connection
+## Device Connection
 
 TCP IP:sb.dasudian.net    Port:8008
 
