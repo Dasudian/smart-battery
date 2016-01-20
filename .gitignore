@@ -1,0 +1,31 @@
+<<<<<<< HEAD
+.idea
+*.iml
+.iml
+*/.rebar
+.cowboy.plt
+.erlang.mk
+_rel
+deps
+doc/man3
+doc/man7
+doc/markdown
+ebin/*.beam
+ebin/test
+examples/*/ebin
+logs
+relx
+.rebar
+test/*.beam
+=======
+.eunit
+deps
+*.o
+*.beam
+*.plt
+erl_crash.dump
+ebin
+rel/example_project
+.concrete/DEV_MODE
+.rebar
+>>>>>>> 23479e3454f4866846168ad2757588ab1532d01c

@@ -1,0 +1,15 @@
+{application, smartBattery_tcp,
+    [
+        {description, "The generic TCP modules for smart battery application"},
+        {vsn, "0.0.1"},
+        {registered, []},
+        {applications, [
+            kernel,
+            stdlib,
+            ranch
+        ]},
+        {mod, {erlang_tcp_app, []}},
+        {env, [
+            {ranch_port, 8008}
+        ]}
+    ]}.

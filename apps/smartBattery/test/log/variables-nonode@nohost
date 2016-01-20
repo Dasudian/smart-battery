@@ -1,0 +1,4 @@
+{config,[{ct_config_plain,"/home/dasudian/Proj/smart_battery/apps/smartBattery/test/smartBattery.config"}]}.
+{event_handler,[]}.
+{ct_hooks,[]}.
+{enable_builtin_hooks,true}.

@@ -1,0 +1,1 @@
+openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -out server.crt -set_serial 3 -days 5000 -sha256

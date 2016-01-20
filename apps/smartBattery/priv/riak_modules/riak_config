@@ -1,0 +1,32 @@
+1. edit the riak.conf with following on riak nodes:
+search=on
+backend=leveldb
+
+2. Type the following on a erl terminal with riakc_pb_socket libs
+>{ok, Pid}=riakc_pb_socket:start_link("192.168.1.103", 8000).
+>{ok, SchemaData} = file:read_file("/home/barco/Proj/cloudbox_portal/apps/cloudbox_portal/priv/riak_modules/solr_schema.xml").
+> riakc_pb_socket:create_search_schema(Pid, <<"videos">>,SchemaData).
+or do following with curl
+
+curl -X PUT -H 'content-type: application/xml' 'http://10.0.3.100:8098/search/schema/dsd_smartbattery_location' --data-binary @dsd_smartbattery_location.xml
+curl -X PUT -H 'content-type: application/xml' 'http://10.0.3.100:8098/search/schema/dsd_smartbattery_commandstatus' --data-binary @dsd_smartbattery_commandstatus.xml
+curl -X PUT -H 'content-type: application/xml' 'http://10.0.3.100:8098/search/schema/authentication' --data-binary @solr_schema.xml
+
+curl -XPUT http://10.0.3.100:8098/search/index/dsd_smartbattery_location -H 'Content-Type: application/json' -d '{"schema":"dsd_smartbattery_location"}'
+curl -XPUT http://10.0.3.100:8098/search/index/dsd_smartbattery_commandstatus -H 'Content-Type: application/json' -d '{"schema":"dsd_smartbattery_commandstatus"}'
+curl -XPUT http://10.0.3.100:8098/search/index/authentication -H 'Content-Type: application/json' -d '{"schema":"authentication"}'
+
+curl http://10.0.3.100:8098/search/index/dsd_smartbattery_location
+curl http://10.0.3.100:8098/search/index/dsd_smartbattery_commandstatus
+curl http://10.0.3.100:8098/search/index/authentication
+
+
+3. do following on riak nodes
+./riak-admin bucket-type create dsd_smartbattery_location '{"props":{"allow_mult":false, "search_index":"dsd_smartbattery_location"}}'
+./riak-admin bucket-type activate dsd_smartbattery_location
+
+./riak-admin bucket-type create dsd_smartbattery_commandstatus '{"props":{"allow_mult":false, "search_index":"dsd_smartbattery_commandstatus"}}'
+./riak-admin bucket-type activate dsd_smartbattery_commandstatus
+
+./riak-admin bucket-type create authentication '{"props":{"allow_mult":false, "search_index":"authentication"}}'
+./riak-admin bucket-type activate authentication

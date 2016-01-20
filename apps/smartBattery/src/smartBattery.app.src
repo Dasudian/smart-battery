@@ -1,0 +1,24 @@
+{application, smartBattery,
+    [
+        {description, "The smart battery application of Dasudian IoT platform"},
+        {vsn, "0.0.1"},
+        {registered, []},
+        {applications, [
+            kernel,
+            stdlib,
+            inets,
+            ssl,
+            lager,
+            %gen_logger,
+            dsd_riak,
+            riakc,
+            emqttc,
+            pooler,
+            jsonx,
+            cowboy,
+            smartBattery_tcp
+        ]},
+        {mod, {smartBattery_app, []}},
+        {env, [
+        ]}
+    ]}.
