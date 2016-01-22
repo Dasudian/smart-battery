@@ -3,7 +3,7 @@
 TCP IP:sb.dasudian.net    Port:8008
 
 Devices exchange information with server in full bi-directional way.
-Please browse [Dasudian Website](http://doc.dasudian.com/api) to lookup the relevant
+Please browse [Dasudian Website](http://docs.dasudian.com/) to lookup the relevant
 documents.
 
 
